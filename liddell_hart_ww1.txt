@@ -1,0 +1,371 @@
+Ch. 1
+Background on Bismarck, via Wikipedia:
+In 1862, King Wilhelm I appointed Bismarck as Minister President of Prussia, a
+position he would hold until 1890 (except for a short break in 1873). He
+provoked three short, decisive wars against Denmark, Austria, and France,
+aligning the smaller German states behind Prussia in its defeat of France. In
+1871 he formed the German Empire with himself as Chancellor, while retaining
+control of Prussia...Bismarck created the first welfare state in the modern
+world, with the goal of gaining working class support that might otherwise go
+to his Socialist enemies...While the Reichstag, Germany's parliament, was
+elected by universal male suffrage, it did not have much control of government
+policy; Bismarck distrusted democracy and ruled through a strong, well-trained
+bureaucracy with power in the hands of a traditional Junker elite that
+consisted of the landed nobility.
+
+- Three Emperor's Alliance in 1881 composed of Russia, Austria, and Germany
+- Reinsurance Treaty between Russia and Germany, maintain benevolent neutrality
+  in case of war with a third, unless Germay attacks France or Russia attacks
+  Austria, 1887
+- 1882 Germany, Austria, Italy allied to protect Austria from a stab in the
+  back from Russia and Italy from France - Triple Alliance
+    - Italy has a longterm relationship with Britan, amends treaty to guarantee
+      it will not be directed against Britain
+    - Rumania attached in 1883
+    - Serbia linked on via agreement with Austria and Spain via agreement with
+      Italy (briefly; ultimately it is allied with Russia instead)
+    - Russia is _not_ part of the Triple Alliance
+- Germany hoped to keep Britain in friendly isolation from itself and
+  unfriendly isolation from France
+    - liked Disraeli but was suspicious of the Gladstonian Liberals (possibly
+      the broader British government as a whole?)
+        - Gladstonian Liberals were "classical" liberals in the sense of being
+          in favor of balanced budgets, free trade, low taxes, laissez-faire
+    - encouraged Britan's adventures in Egypt as it embroiled them with France
+    - also received oversea concessions from Britan in exchange for support
+      e.g. Heligoland
+        - via Wikipedia: "Heligoland (German: Helgoland; Heligolandic Frisian:
+          deät Lun ["the Land"]) is a small German archipelago in the North
+          Sea. The islands were at one time Danish and later British possessions.
+          The islands (population 1,127) are located in the Heligoland Bight (part 
+          of the German Bight) in the southeastern corner of the North Sea.
+          The islands are the only German islands not in the immediate vicinity
+          of the mainland. They lie approximately 69 kilometres (43 miles) by sea 
+          from Cuxhaven at the mouth of the River Elbe...Britain gave up the
+          islands to Germany in 1890 in the Heligoland-Zanzibar Treaty. The newly unified
+          Germany was concerned about a foreign power's controlling land from which it
+          could command the western entrance to the militarily-important Kiel Canal, then
+          under construction, and other naval installations in the area, and traded for
+          it. A "grandfathering"/optant approach prevented the Heligolanders (as they
+          were named in the British measures) from forfeiting advantages because of this
+          imposed change of status."
+        - Heisenberg also came up with his formulation of quantum mechanics
+          there, and post WWII the Royal Navy created one of the biggest single
+          non-nuclear deontations in history there, actually changing the shape
+          of the island (2nd biggest nn det)
+- by the end of the 1880s Germany was ready to pursue commercial expansion, but
+  William II acceded to the throne and began to screw things up
+    - Alexander III of Russia didn't trust William II
+    - William II was raised among the military and was close with them without
+      realizing that his relationship with them would result in his being
+      indebted to/controlled by them
+    - dismissed Bismarck
+    - new Chancellor refused to renew Reinsurance Treaty with Russia
+    - Russia and France subsequently enter into an alliance that says if any
+      member of the Triple Alliance mobilizes, both Russia and France will too
+        - Russia was mostly motivated to enter this alliance because it was
+          afraid Britain was about to enter into an alliance with Germany
+- pg. 4: "An essential difference between the two men [Bismarck and Wilhelm II] 
+  was that the one sought security through consistent dishonesty, and the other 
+  gained insecurity through spasmodic honesty."
+- gradual conflict grew between Germany and Britain as Germany began to focus
+  on external rather than internal expansion
+    - this naturally brought its interests into conflict with Britain's
+    - "As so commonly happens with great men, his disciples forgot his
+      principles and remembered only his method - the mailed fist."
+      (pg. 5, regarding Bismarck and subsequent German statesmen handling of
+      conflict with Britain)
+- some international conflicts precipitated by Germany in the 1890s:
+    - with Britain over railway concessions in Turkey, wherein the Germans
+      gave the British an ultimatum to stop competing with them (1892)
+    - German intervention enabled Russia to deprive Japan of spoils of war with
+      China (1895)
+    - snotty telegram to President Kruger subtly denying British suzerainty
+      over the Transvaal following the Jameson raid (1986)
+        - motivated by frustrations over British military interests in South
+          Africa that conflicted with Germany's interests there
+        - "At a council on January 3rd, 1896, he suggested that Germany should
+          proclaim a protectorate over the Transvaal and send troops thither.
+          When the Chancellor, Hohenlohe, objected 'that would be war with England', 
+          the Kaiser ingenuously replied, 'Yes, but only on land.'"
+        - via Wikipedia: "The Jameson Raid (29 December 1895 – 2 January 1896)
+          was a botched raid against the South African Republic (commonly known
+          as the Transvaal) carried out by British colonial statesman Leander Starr
+          Jameson and his Company troops ("police" in the employ of Beit and Rhodes'
+          British South Africa Company) and Bechuanaland policemen over the New Year
+          weekend of 1895–96. Paul Kruger was president of the republic at the time. The
+          raid was intended to trigger an uprising by the primarily British expatriate
+          workers (known as Uitlanders) in the Transvaal but failed to do so. The workers
+          were called the Johannesburg conspirators. They were expected to recruit an
+          army and prepare for an insurrection. The raid was ineffective and no uprising
+          took place, but it was an inciting factor in the Second Boer War and the Second
+          Matabele War."
+- the German-British pseudo-altercation over the Transvaal became the beginning
+  of German military development in earnest
+    - "the trident must be in our fist", significant moves in naval development
+      and military investment
+- also provocations with Britain and France when the Kaiser declared Germany
+  the protector of all Mohammedans throughout the world while in Damascus
+- also provocation with Russia when establishing Germany as the "patron saint"
+  of Turkey; Russia wanted to acquire Constantinople, and now it saw Germany as
+  a major barrier standing in its way
+- "Like the opponents whom Napoleon derided, the Kaiser failed in policy because
+  he 'saw too many things at once', and forced the other powers, whom Bismarck
+  had played off against each other, to see only one thing - the fist of Ger-
+  many - wherever they looked." (pg. 6)
+- despite all these things, the affront over South Africa was actually followed
+  by Chamberlain offering the alliance Bismarck had sought in vain in 1898 and again
+  until 1901
+    - but the Kaiser declined Chamberlain's offers, suspecting they came out of
+      weakness and also because Friedrich von Holstein of Germany was a dummy
+      and he simultaneously worried that Germany would become Britain's "catspaw" and
+      shock-absorber against Russia
+    - Liddell Hart says that the Kaiser consistently underrated Britain's
+      strength and overrated Russia's (pg. 7)
+- Now Germany hoped to get favorable concessions from Britain while keeping
+  Britain hoping for closer diplomatic ties and simultaneously subtly
+  threatening Britain with the stronger navy that had freshly expanded in 1900
+- over the next few years the British government was forced to concede a lot
+  just to avoid German threats being pressed into action
+    - Lord Salisbury's government shows "contemptible weakness" (pg. 7) that
+      Liddell Hart says might be blamed for the eventual conflict, as British
+      acquiesences to German demands appeared to confirm the efficacy of the "mailed
+      fist" method
+- the Kaiser probably didn't seek war from the beginning, and didn't need to
+  since he was getting what he wanted with much lower risk
+- he also had good intentions in a lot of areas, but ignored the bad effects of
+  what he did
+    - "He saw himself arrayed in 'shining armour' when actually he was wearing
+      the garb of Puck. He proved that making mischief makes war." (pg. 8)
+- Britain warned that its era of isolation was past, and that it preferred to
+  join Germany and the Triple Alliance, but it that didn't happen then it would
+  contemplate rapprochement with France and Russia (and ultimately this led to
+  Britain joining the Dual Alliance of F+R)
+- Britain first made an alliance with Japan in 1902, and this went sort of
+  badly at first
+    - Marquis Ito preferred an alliance with Russia, and the alliance with
+      Britain proceeded only because the negotiations in Britain happened
+      before he made it to St. Petersburg
+    - even then the Japanese Council of Elder statesmen weren't sure they would
+      accept the British agreement, and ultimately the acceptance led to the
+      Russo-Japanese war indirectly, which wasn't what the British wanted at all
+        - via Wikipedia: "The alliance with the British meant, in part, that if
+          any nation allied itself with Russia during any war against Japan,
+          then Britain would enter the war on Japan's side. Russia could no longer count
+          on receiving help from either Germany or France without there being a danger of
+          British involvement in the war. With such an alliance, Japan felt free to
+          commence hostilities, if necessary."
+    - Russian totally blew it in the Russo-Japanese war, shocking the
+      international community (the following via Wikipedia)
+        - the war quickly became very unpopular at home, making the whole
+          Romanov dynasty even more unpopular and leading to the first revolution 
+          in 1905 and the second in 1917
+        - Poland, partitioned by Russia in the 18th century, had been roiling
+          with revolutionary fervor for a while and revolutionaries there
+          attempted to collaborate with the Japanese
+        - the war resulted in a lot of international respect for Japan
+        - it decimated the Russian Pacific and Baltic fleets
+        - it made Russia look a lot weaker than people had thought, which
+          affected Germany's decision to go to war with France and Serbia,
+          Russia's allies
+        - also a lot of serious financial issues happening, with both Russia
+          and Japan receiving significant outside funding
+            - in particular, Russia had poor finances even in peacetime; it ran
+              budget deficits every year and relied heavily on France to stay
+              solvent
+            - the French government had to bribe the press to prevent public
+              outcry about the later wartime loans, which it felt it necessary
+              to make because it recognized that Russian and French finances 
+              were dependent (possibly because Russia was so indebted to France?)
+- 1904 brought the Entente Cordiale between Britain and France, in part made
+  possible by an agreement that Britain could continue to occupy Egypt if
+  France would be permitted to occupy Morocco if it could
+- the Kaiser then attempted to break up the alliances among his various rivals:
+    - first he encouraged Russia to send the Black Sea Fleet through the
+      Dardanelles in defiance of Britain during R-J war, which they refused
+    - then when Russia's Baltic Fleet sailed east it received false info
+      (Russia later alleged from Germany) asserting that Japanese torpedo craft
+      were hiding in the North Sea, leading them to mistakenly fire on British
+      trawlers 
+        - they made things worse by not apologizing for this right away
+    - this temporarily brought Russia and Britain to the brink of war, and then
+      almost led Russia to sign a treaty with Germany which they ultimately
+      declined
+    - then Germany challenged France's claims in Morocco
+    - and attempted to get Russian to sign a treaty again, failed
+- Sir John Fisher of Britain apparently was a big talker around this time, and
+  threw around statements to the effect that if Germany wouldn't limit naval
+  expansion then her fleet should be "Copenhagened" on the Nelson model (pg. 11)
+  (see Battle of Copenhagan 1801 for details)
+- Britan didn't want to formally commit to a treaty with France, but intended
+  to intervene on France's behalf should it be attacked
+    - the Germans had a new war plan in 1905 that assumed a British force of
+      100,000 men would be on France's side; this is exactly the number France
+      asked for
+- the Kaiser is the nephew of British King Edward VII, and Edward doesn't seem 
+  to mind riling the Kaiser up on purpose...much of the family (except Queen
+  Victoria) seem to think he's an asshole
+- the Kaiser is pretty interested in "the forces of Mahommedanism" under
+  Prussian leadership
+- by 1907 Britain doesn't have a formal agreement with France or Russia, but
+  has "made up" with them such that mutual loyalty is reasonably expected
+- Britain no longer has independence in a crisis which is perhaps not so great,
+  e.g. Foreign Secretary Edward Grey in a memorandum in 1906:
+    
+'There would, I think, be a general feeling in every country that we had
+behaved meanly and left France in the lurch. The United States would despise
+us, Russia would not think it worthwhile to make a friendly arrangement with us
+about Asia, Japan would prepare to reinsure herself elsewhere, we should be
+left without a friend and without the power of making a friend and Germany
+would take some pleasure in exploiting the whole situation to our disadvantage
+... On the other hand the prospect of a European war and of our being involved
+in it is horrible.'
+
+- from this point on, even if it's unofficial, Europe is divided into two
+  groups
+    - Britain's presence in the new group makes Italy less keen on helping out
+      in the old group
+    - this made Germany more dependent on Austria as a partner, which is good
+      if you want war and bad if you want peace
+- because everyone was pretty scared of war happening, they gave free reign to
+  military leadership for a while before the war actually happened, which
+  probably helped ensure that the war happened when it did and resulted in more
+  casualties
+- Turkish revolution in 1908 
+    - Bulgaria took the opportunity to declare independence from Turkey
+    - Austria annexed Bosnia and Herzegovina
+    - Austria had discussed the annexation ahead of time with Russia, and
+      Russia had assented if Austria would help secure opening of the Dardanelles
+    - Before Russia could take steps in that direction by discussing things
+      ahead of time with France and Britain, the annexation was declared
+    - Italy felt affronted and Serbia felt threatened
+    - Germany threatened Russia with a combined German/Austrian attack if it
+      didn't recognize the annexation
+    - Russia felt it had no choice, but also felt that it had been tricked
+    - the foreign minister resigned, then moved to the Paris embassy with a
+      pretty solid hatred of Germany
+    - Austria felt emboldened by the success of the "mailed-fist method of
+      diplomacy"
+- Germany tried to get Britain to sign an agreement (which Britain in principle
+  wanted to do) that would in part prevent them from coming to France's aid
+    - to which Sir Edward Grey replied "One does not make new friendships worth
+      having by deserting old ones."
+- lots of mistaken thoughts in Germany about Britain conspiring against them
+  all along
+    - e.g. common idea that Edward VII visited Austria in 1908 to try to get
+      Austria to abandon Germany, when actually he visited to ask for Austria's
+      help in having a better relationship with Germany
+- France and Germany did agreeably settle over Morocco around this time, so
+  that's something
+- more duplicitousness in the Balkans
+    - Bulgaria, Serbia, and Greece tried to claim autonomy for Macedonia as a
+      step toward expelling the Turks from Europe
+    - Serbia was supposed to get Northern Albania, but Austria was worried
+      about Serb ambitions and didn't want a Slav state to gain access to the
+      Adriatic
+    - Austria mobilized troops against Serbia, so Russia mobilized in response
+    - Germany, France, and Britain came together to try to calm things down
+    - the settlement created more problems: establishing Albania as an
+      independent state meant that Serbia wanted something else as its spoil,
+      so it claimed part of Macedonia
+    - Bulgaria opposed this, but it was opposed by Serbia and Greece; Rumania
+      also got involved and while this was happening Turkey reclaimed part of
+      Macedonia
+    - ultimately Serbia benefited the most and Bulgaria lost, and Austria
+      wasn't happy about this
+    - Austria wanted to attack Serbia immediately in the summer of 1913
+    - Germany opposed this and tried to calm things down, but at the same time
+      extended German control of the Turkish Army, which inflamed tensions with
+      Russia again
+    - Russia sees that this makes access to the Dardanelles very unlikely, and
+      various experts state that it will only happen if there is a European war
+- Austria, Russia, and Germany were all looking to war as a way to silence
+  discord within their borders
+- President Wilson's confidant left Berlin believing that the military party
+  was determined there would be a war, at the earliest opportunity, and that
+  they were ready to force Wilhelm II to abdicate if he opposed them on this
+- Franz Ferdinand was sort of an ironic person to assassinate since he was
+  sympathetic to the Slavs and hoped for a reconstructed empire that was a
+  federation of the different nationalities
+  (assassinated June 28, 1914)
+    - to most Bosnian Slavs he was just a symbol so his opinions didn't matter
+    - to extreme nationalists his federation ideas just made him a greater
+      enemy, since it could fragment them and prevent their goal of breaking
+      away from the empire to create a Yugo-Slav state with Serbia
+    - pg. 17:
+      "What is certain is the amazing carelessness of the Austrian authorities in
+      guarding the Archduke, and their cynical indifference to the fate that befell
+      this highly unpopular heir to the throne. Potiorek, the military governor of
+      Bosnia and future commander of the offensive against Serbia, could not have
+      done more to facilitate the task of the assassins if he had connived at it.
+      Hence there must always be a suspicion that he did."
+- all of Europe was horrified and indignant except for Austria and Serbia
+- despite there being no evidence to implicate the Serbian government and in
+  fact evidence to the contrary, even by the Austrian officials' estimations,
+  Austria was determined to go to war
+- Germany says "go for it, we're down" and also advises that "peaceful
+  intentions should be simulated" to try to catch the Allies unprepared
+- they were just concerned with getting support from Italy, Bulgaria, Rumania,
+  and Turkey
+- Austria then attempts to draft an ultimatum to Serbia that will definitely be
+  unacceptable (Count Tisza of Austria has been objecting this whole time, but
+  is brought around by arguments that if Austria doesn't take this opportunity to
+  start the long-awaited conflict, Germany might revoke their partnership)
+- they wait to deliver the ultimatum until the French president has just sailed
+  from St. Petersburg, the Russian ambassador in Vienna has been induced to
+  go on leave, and the Serbian Prime Minister is away
+    - it is presented on July 23
+    - it demands the repression of all propaganda against Austria;
+    - Austria's right to order the dismissal of any Serbian officials; and,
+    - Austria's right to post her own officials in Serbia,
+    - as well as other things not mentioned directly by Liddell Hart,
+      presumably because they are less of a direct violation of Serbia's
+      sovereignty
+    - Serbia is only given 48 hours for acceptance, and the next day Germany
+      delivered notices to St. Petersburg, Paris, and London stating that the
+      Austrian demands are "moderate and proper" without even having seen the
+      ultimatum (pg. 19)
+- two minutes before the ultimatum expired the Serbian reply was given to the
+  Austrian ambassador; without reading it he broke off relations and caught the
+  train, per his orders
+    - three hours later orders were given to partially mobilize Austria on the
+      Serbian front; simultaneously Germany and Russian started to mobilize
+    - actually the Serbs had accepted all the Austrian demands except the two
+      that obviously violated their status as an independent nation
+    - blerg, this just shows the success of the "mailed fist" yet again
+    - the response belatedly convinces the Kaiser to pull back, but he encourages
+      Austria to occupy part of Serbia until they actually meet all the demands
+    - meanwhile the other major powers, led particularly by Britain, attempt to
+      move forward with diplomacy; Germany appears to play along only in the
+      hope that Britain will be convinced not to join in with its European allies
+      when the war starts
+    - none of it mattered; on July 28 Austria delivered by telegram a
+      declaration of war to Serbia, and Berchtold of Austria declined Sazonov
+      of Russia's proposal for direct, diplomatic conversations due to the fact that
+      war had already been declared
+        - actually there was no reason for haste, since the army wouldn't be
+          ready to move until August 12
+        - Berchtold and Conrad were worried if they waited that they would lose
+          German support and this opportunity for war
+        - on July 27 Berchtold told the emperor "I think that a further attempt
+          by the Entente Powers to bring about a peaceful solution remains
+          possible only so long as a new situation has not been created by the
+          declaration of war." (pg. 21) in his work to get the war started, he
+          even lied about Serbian troops attacking first
+- in Germany, Russia, and Austria, the statesmen's work for peace was being
+  countered by Generals' entreaties to action and predictions of dire
+  consequences if their advice were disregarded
+- for example, Sazonov of Russia finally agrees that just a partial mobilization
+  should begin, just on the Austrian front; the Gernal Staff argue that for
+  "technical reasons" they can't do it, and only a general mobilization is
+  possible
+    - it doesn't hurt that Germany eggs them on, sending a "friendly opinion"
+      that if they mobilize Germany will see it as a declaration of war, and
+      Sazonov figures they mean even a partial mobilization, so in that case what's
+      the point of only partially mobilizing?
+- Germany is concerned about not looking like the bad guy, losing the support
+  of Italy and drawing Britain in to support France and Russia
+    - they try to bargain with Britain, do it badly, and it is refused; the
+      Kaiser has a tantrum
+- confusion and flip-flopping continues...
+- 
