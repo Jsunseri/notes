@@ -22,6 +22,22 @@ The Journal of Physical Chemistry B Kidera et al. 2017 doi:10.1021/acs.jpcb.6b11
 - scaling enhanced sampling to a whole protein is challenging; they limit
   conformational sampling of MM to an "essential subspace" defined with small
   dimensions from the CG model
+- their "multiscale" potential includes terms for the MM and CG systems, plus a
+  harmonic coupling term that accelerates the MM system based on movement in
+  the CG system
+- however, they want a free energy surface based on the MM, without bias
+  attributable to the CG system, so they calculate the joint distribution of
+  r_MM and r_MMCG via Gibbs sampling and extrapolate it to k_MMCG=0 (k is the 
+  coupling constant)
+- they also introduced an adiabatic separation between the MM and CG
+  simulations for efficient sampling
+- this adiabatic separation ensures that the CG system is not influenced by 
+  the MM system, and then in the detailed balance condition they can use the
+  same CG system for many replicates of the MM system, which results in useful
+  cancellation of a hard-to-calculate term
+- overall, they iteratively run MD simulations for r_MM and r_CG, followed by
+  MCMC sampling of k_MMCG
+- \mu^2 lib was used for multicopy and multiscale MD
 - 
 
 Binding Kinetics in Drug Discovery
@@ -482,3 +498,19 @@ Godfrey S. Beddardd, Gavin D. Reidd, Sagarika Deve, and Martin Volk
 Universal statistical fluctuations in thermodynamics
 and kinetics of single molecular recognition
 Xiliang Zheng and Jin Wang
+
+Chodera, J. D.; Shirts, M. R. Replica Exchange and Expanded
+Ensemble Simulations as Gibbs Sampling: Simple Improvements for
+Enhanced Mixing. J. Chem. Phys. 2011, 135, No. 194110
+
+Liu, J. S. Monte Carlo Strategies in Scientific Computing, 2nd ed.;
+Springer: New York, 2002
+
+Rosso, L.; Tuckerman, M. E. An Adiabatic Molecular Dynamics
+Method for the Calculation of Free Energy Profiles. Mol. Simul. 2002,
+28, 91−112.
+
+Maragliano, L.; Vanden-Eijnden, E. A Temperature Accelerated
+Method for Sampling Free Energy and Determining Reaction
+Pathways in Rare Events Simulations. Chem. Phys. Lett. 2006, 426,
+168−175
