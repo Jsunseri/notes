@@ -28,7 +28,7 @@ Binding Kinetics in Drug Discovery
 Molecular Informatics de Fabritiis et al. 2016 doi:10.1002/m inf.201501018
 - they note that in the past affinity was used as a proxy measure of drug
   efficacy, but now dissociation rate is also considered to be important
-- the kinetics is governed by the energy of the transition state
+- kinetics are governed by the energy of the transition state
 - K_D might be a poor descriptor of \emph{in vivo} efficacy because other
   interactions violate the equilibrium condition assumed in the \emph{in vitro} tests
 - residence time can provide a better measure of \emph{in vivo} selectivity and
@@ -124,7 +124,6 @@ Molecular Informatics de Fabritiis et al. 2016 doi:10.1002/m inf.201501018
   behavior in general, for example suggesting that slow kinetics may result
   when "water-shielded hydrogen bonds" prevent water molecules from stabilizing
   the transition state
-- 
 
 Energy Landscape Topography Reveals the Underlying Link Between Binding Specificity and Activity of Enzymes
 Nature Scientific Reports Wang et al. 2016 doi:10.1038/srep27808
@@ -142,7 +141,7 @@ Nature Scientific Reports Wang et al. 2016 doi:10.1038/srep27808
 - k_cat/K_m is the enzyme activity or "specificity constant"
 - k_cat is related to the catalytic reaction barrier, while K_m is related to
   binding free energy
-- they define ISR as \delta E / \Delta E \sqrt{2s}, where \delta E the energy
+- they define ISR as \delta E / \Delta E \sqrt{2s}, where \delta E is the energy
   gap/slope between the native state and the average energy i.e. \delta E := |E_n - \bar{E}|, 
   \Delta E is the roughness of the distribution of binding energies, and s 
   is the entropy / N
@@ -296,7 +295,7 @@ PNAS Jiang et al. 2013 doi:10.1073/pnas.1301814110
   points determined by energy at those points and no back moves permitted
 - goal is to identify lowest-energy pathway from gobal minimum (active site) to
   bulk solvent
-- IDEAS: fit a force field to reproduce the energy landscapes for a variety of
+- IDEA (from David): fit a force field to reproduce the energy landscapes for a variety of
   complexes in a database 
 
 -----MMGBSA/MMPBSA Methods-----
