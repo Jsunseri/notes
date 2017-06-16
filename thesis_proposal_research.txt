@@ -316,6 +316,8 @@ PNAS Jiang et al. 2013 doi:10.1073/pnas.1301814110
 
 -----MMGBSA/MMPBSA Methods-----
 [not strictly relevant but this paper looked interesting]
+The MM/PBSA and MM/GBSA methods to estimate ligand-binding affinities
+Expert Opinion Drug Disc Ryde et al. 2015 doi:10.1517/17460441.2015.1032936
 - docking and scoring methods generally cannot differentiate between compounds
   that differ by less than an order of magnitude in affinity/ < 6 kJ/mol in
   \deltaG_bind 
