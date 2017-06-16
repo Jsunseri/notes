@@ -1,0 +1,485 @@
+-----Binding Kinetics-----
+
+Free-Energy Landscape of Protein−Ligand Interactions Coupled with
+Protein Structural Changes
+The Journal of Physical Chemistry B Kidera et al. 2017 doi:10.1021/acs.jpcb.6b11696
+- all-atom explicit solvent calculations that utilized multi-scale enhanced
+  sampling (MSES)
+- they were able to create a free energy surface of the _coupling_ using the
+  structural ensemble from the MSES, though they say the surface is in terms of
+  both the protein and ligand degrees of freedom
+- they state that they are interesting in exploring how coupling between the
+  degrees of freedom of the protein and ligand affects the distribution of
+  conformers each explores
+- a challenge in determining this is the separation of timescales for ligand
+  diffusion, ligand-protein interaction, and protein structural change
+- they developed MSES to be able to overcome the timescale separation problem;
+  they want to look at the process starting from the encounter complex and
+  ending with the native bound state
+- it couples all-atom MD with accelerated dynamics based on coarse-graining the
+  degrees of freedom and Hamiltonian replica exchange that eliminates bias by
+  coupling to the CG model
+- scaling enhanced sampling to a whole protein is challenging; they limit
+  conformational sampling of MM to an "essential subspace" defined with small
+  dimensions from the CG model
+- 
+
+Binding Kinetics in Drug Discovery
+Molecular Informatics de Fabritiis et al. 2016 doi:10.1002/m inf.201501018
+- they note that in the past affinity was used as a proxy measure of drug
+  efficacy, but now dissociation rate is also considered to be important
+- the kinetics is governed by the energy of the transition state
+- K_D might be a poor descriptor of \emph{in vivo} efficacy because other
+  interactions violate the equilibrium condition assumed in the \emph{in vitro} tests
+- residence time can provide a better measure of \emph{in vivo} selectivity and
+  a higher residence time can mean greater efficacy even if the drug has higher
+  affinity for other proteins (e.g. muscarinic receptor subtype selectivity)
+- k_on is affected by dose and limited by diffusion limit, absorption,
+  distribution
+- k_off is affected only by target-drug interactions, so it is more directly
+  affected by tuning and amenable to iterative optimization
+- like many areas in contemporary biology, increased computational focus has 
+  been made possible by improved experimental techniques that yield more, 
+  better data faster and more easily:
+    - radioligand binding, TR-FRET, fluorescence anisotropy, intrinsic
+      fluorescence: suitable for membrane systems, direct determination of
+      k_off and k_on, low-throughput and labor intensive, the first one generates
+      radioactive waste, requires high-affinity ligands, requires recombinant
+      receptors in animal tissues
+    - Label-free surface plasmon resonance (SPR): no label required, low
+      material consumption, medium throughput, usualy only for soluble
+      proteins, immobilization of receptor required
+    - enzymatic assays: no label required, short development time, knowledge of
+      mechanism required
+- affinities can be estimated with one or a few reaction endpoints, but
+  kinetics require complete reconstruction of binding pathways
+- there are two main techniques to reconstruct the system's motion at
+  biologically relevant timescales:
+    - Brownian dynamics: macromolecules follow Brownian motion; solvent moves
+      faster so it's coarse-grained - replaced by stochastic force. this
+      reduction in computational complexity permits exploration of motion on
+      timescales much longer than those probed by MD. it has been used to look
+      at protein-protein association kinetics including barnase-barstar
+    - BD has more recently been used to provide kinetic quantitative estimates
+      e.g. for HSP90 and MDM2 inhibitor residence times
+    - inaccuracies are definitely a problem; to recover experimental values
+      model corrections must be applied in general. need to account for things
+      like desolvation shells, polarization, and entropic effects
+    - alternatively you can use MD enhanced sampling methods e.g.
+      conformational flooding, adaptive force bias, local elevation,
+      metadynamics, or umbrella sampling with WHAM
+    - these are used to obtain a PMF usually, but can be combined with other
+      methods to reconstruct binding kinetics
+    - e.g. bias-exchange metadynamics, though BEMD by itself can't provide
+      absolute estimates of kinetic parameters - it's used to compare
+      congeneric molecules or provide meta-stable states to be used in kinetic Monte
+      Carlo simulations
+    - random acceleration MD (RAMD) identifies unbinding pathways by applying a
+      force vector with a random direction to a bound ligand; it can provide
+      relative kinetic estimates, or predict an unbinding pathway to be used in
+      umbrella sampling or steered MD (SMD)
+    - then umbrella sampling or SMD can be used to construct a PMF or to
+      compute absolute k_on and k_off values using transition state theory
+    - see e.g. method used for ligand unbinding from cytochrome P450cam or
+      carazolol from \Beta_2 AR
+    - a major limitation of many methods is that reaction coordinates are
+      generally hand selected, and you need these to construct a PMF, so if
+      that is part of the process, there's a major risk of missing something in the
+      landscape
+    - tuning pulling forces is also a risky process, since you need to ensure
+      unbinding with minimal effects on the energy landscape
+- improved computing resources have recently made unbiased brute force calculations 
+  for some systems feasible (yeah!)
+- obligatory discussion of ANTON and resulting publications; in particular,
+  replicate studies performed with high concentration of ligands per box in
+  each simulation; include distance-dependent repulsive force to prevent compound
+  aggregation
+- k_on was determined for such studies by calculating the frequency of binding
+  events and then accounting for the concentration
+- GPUGRID.net uses BOINC to distribute computing resources for MD simulations 
+- it was used to study benzamidine binding to trypsin protease at 5 mM
+  concentration (a fast fragment-binding event); 495 simulations of 100 ns each
+  were performed leading to 197 binding events within 2A RMSD of the crystal
+  structure
+- these results were used to create a Markov State Model that was then used to
+  reconstruct binding intermediates, transition rates, and affinities,
+  apparently with good accuracy (but ok, results were known, N=1, etc.)
+- another study, this one of AmpC B-lactamase, was able to recapitulate and
+  characterize the role of a loop in close proximity to the binding site
+- one more: 42 fragments were simulated with factor Xa, a serine protease that
+  has two known druggable pockets. With more than 2ms of simulation time they
+  could obtain thermodynamic, pose, and kinetic estimates in "good agreement" 
+  with experimental results
+- sometimes simulations were respawned from interesting states manually
+  selected by a human in order to enhance sampling without biasing it (does
+  this really not bias anything? they say that you effectively discretize the
+  activation energy into "epochs")
+- adaptive sampling uses a Markov state model to respawn from interesting
+  states automatically
+- these reduce the simulation time that would be required if you were
+  brute-forcing the calculations, but how accurate are they really? need to
+  follow up. for the Pande paper referenced, they just state that the kinetic
+  parameters they computed were of the right order of magnitude
+- they note that MD has provided some theoretical insight into binding
+  behavior in general, for example suggesting that slow kinetics may result
+  when "water-shielded hydrogen bonds" prevent water molecules from stabilizing
+  the transition state
+- 
+
+Energy Landscape Topography Reveals the Underlying Link Between Binding Specificity and Activity of Enzymes
+Nature Scientific Reports Wang et al. 2016 doi:10.1038/srep27808
+
+- this quote: "PPE requires several essential residues for catalysis, but PHBH
+  accomplishes the catalytic reaction through only a co-factor. The substrate 
+  of PPE is a large long-chain molecule, whereas the substrate of PHBH is a 
+  small aromatic molecule. Both the binding and catalyzing processes of PPE and 
+  PHBH are different. Therefore, the study of the activity of these two systems 
+  is comprehensive and representative." LOL
+- goal is to explore energy landscape of enzyme-substrate interactions and
+  demonstrate correlation between specificy and activity, then find enzyme
+  activity hotspots in the energy landscape to design e.g. more active enzymes
+- introduce "intrinsic specificity ratio" to represent landscape topography
+- k_cat/K_m is the enzyme activity or "specificity constant"
+- k_cat is related to the catalytic reaction barrier, while K_m is related to
+  binding free energy
+- they define ISR as \delta E / \Delta E \sqrt{2s}, where \delta E the energy
+  gap/slope between the native state and the average energy i.e. \delta E := |E_n - \bar{E}|, 
+  \Delta E is the roughness of the distribution of binding energies, and s 
+  is the entropy / N
+- they state that "exploring ligand interactions with the receptors through
+  the sequences (different receptors) and exploring the ligand interactions with 
+  a receptor through conformations (different binding modes) are equivalent
+  for large receptors." what do they mean? I think they are referring
+  only to the case of measuring specificy, since they make the general statement
+  above to justify their claim that comparing specificity of ligand across
+  different receptors is equivalent to comparing ligand specificity to different
+  conformations of the binding site
+- in the supplement they state the \delta{E} is the "slope" of the landscape and
+  \Delta{E} is the energy fluctuation or width of the energy distribution of 
+  the decoys, and reflects the roughness of the landscape
+- then they can actually quantify the energy gap per contact interaction,
+  \delta{E}/N, and \Delta{epsilon}^2 := \Delta{E}^2/N, the effective width of
+  the energy distribution per contact interaction
+- ISR can be used to show the changes in energy landscape topography for a
+  mutagenic series of enzyme-substrate complexes, and that should correlate  
+  with changes in k_cat/K_m
+- additionally, if you fix either conventional specificy (binding affinity
+  difference) or kinetic specificity (catalytic rate), the change in enzyme
+  activity should be consistent with a change to the other characteristic
+- "conventional specificity" here is the difference in affinity between the
+  true binding pair in its true pose and the alternatives, e.g. the difference
+  in affinity between the wild-type and mutant forms of the enzyme, or
+  generally the same ligand binding to different receptors
+- the reaction barrier of the catalytic reaction is used as the kinetic
+  specificity
+- mutant enzyme systems have a less funneled energy landscape than the wild
+  type
+- as far as the energy landscape goes, they just create two dimensional figures
+  of the PMF for selected important reaction coordinates 
+- ISR correlation with activity is lower than activity correlation with
+  conventional or kinetic specificity, which seems bad given that I thought the
+  point of ISR was to improve prediction of activity
+- also the activity they use appears to be calculated from simulation data,
+  _not_ experimental?
+
+The Free Energy Landscape of Small Molecule Unbinding
+PLoS Comp Bio Caflisch et al. 2011 doi:10.1371/journal.pcbi.1002002
+
+- weaker affinity ligands have b/u transition states that are closer to the
+  bound state (manifestation of Hammond behavior)
+- construct landscape via complex network analysis and the minimum cut-based
+  free energy profile method
+- for each ligand and temperature value (310 or 350 K), 50 independent MDs of
+  no greater than 20ns were performed
+- snapshots clustered by DRMS of pairwise intermolecular distances using the leader algorithm
+- unbinding times were extracted directly from the trajectories
+- network was generated with spring-embedder algorithm, nodes are clusters of
+  snapshots from the MDs
+- cut-based FEP is a projection of the free energy surface that preserves
+  barriers and can be used to extract folding pathways and mechanisms from simulations
+- compute partition function from number of direct transitions observed between
+  nodes along the time series
+- network edges with minimum flow are transition edges
+- the unbinding TSE/Hammond behavior is maybe worth remembering/looking into
+- they note that it might be interesting to analyze the free energy landscape
+  of binding for small molecules with very similar chemical structure but very
+  different affinity for a protein, e.g. a series of protein kinase inhibitors
+  that differ by only one or two heavy atoms but have an affinity range that
+  spans micromolar to nanomolar affinity
+
+Imaging G protein–coupled receptors while quantifying their ligand-binding free-energy landscape
+Nature Methods Muller et al. 2015 doi:10.1038/nmeth.3479
+
+- appears to be an _experimental_ method for reconstructing the free energy
+  landscape
+- the key experimental technique is force-distance curve-based atomic force
+  microscopy
+- also of interest is that PAR1 (a GPCR) has an N-terminal domain that, after
+  undergoing cleavage, serves as a "tethered ligand"
+- AFM tip is derivatized with variants of this domain as well as other
+  hexapeptides, and then it undergoes a sinusoidal movement to ensure
+  intermittent contact of the AFM tip with the sample
+- the AFM approach works by varying the effective concentration of the ligand
+  near the receptor; this is realistic for the tethered ligand case, but could
+  in theory enable even low affinity ligands to bind a receptor in the general
+  case
+- landscape projection is on force and loading rate axes
+
+Protein Folding, Binding and Energy Landscape: A Synthesis 
+"Protein Engineering" Chapter 10, Fu et al. 2012 doi:10.5772/30440
+
+- they note that protein folding and binding are similar processes and the only
+  real difference between them is the presence or absence of chain connectivity
+- conformational selection is primarily an entropic process, plays a role in
+  the first contact between a protein and ligand, and determines binding specificity
+- induced fit is primarily an enthalpic process, based on bond formation,
+  determines binding affinity
+- time/pathways are kinetic properties, where kinetics defines the energy
+  barriers between different system states
+- relative probabilities/populations/lifetimes of conformational substates are
+  thermodynamic properties that correspond to free energy
+- this article is kind of trashy in that it occasionally refers to
+  nonscientific things, but maybe it's useful for finding relevant references
+- protein dynamics have kinetic (timescale of fluctuations) and structural
+  (amplitude of fluctuations) components
+
+Free energy landscape for the binding process of Huperzine A to acetylcholinesterase
+PNAS Jiang et al. 2013 doi:10.1073/pnas.1301814110
+
+- they use existing energy landscape theory developed in the context of protein
+  folding to protein-ligand binding
+- they claim that their method allows both binding free energy and binding
+  kinetics to be estimated accurately
+- they actually predict activation free energies of association and
+  dissociation, but the quantity we probably actually care about for drug
+  discovery is drug target residence time (1/k_off)
+- drug efficacy does not always linearly correlate with binding affinity -
+  binding kinetics also matters
+- if you have a binding free energy landscape, you can get k_on and k_off via
+  the Eyring equation if you know the transmission factors
+    - if you don't know the transmission factors, just getting the activation
+      free energy of dissociation is probably sufficiently informative for drug
+      discovery
+- they claim that previous methods that could provide kinetic parameters were
+  inaccurate and required large-scale molecular simulations (and theirs won't)
+- workflow:
+    - identify possible binding pockets/gorges for ligand entering/leaving the
+      active site (via MOLE)
+    - create lattice model of protein by constructing a large box around it and
+      then subdividing it into a bunch of smaller boxes (lattices)
+    - reconstruct the binding configuration space by docking the ligand into
+      the lattices that cover the possible binding pockets and their
+      entering/leaving paths
+    - calculate the binding free energy for each binding configuration
+    - construct BFEL surface and use it to compute thermodynamic/kinetic
+      quantities of interest from the binding/unbinding pathways
+- they claim novelty from improving the MM-GBSA method and from a new algorithm
+  for binding configuration sampling that is a multiobjective flexible-docking
+  method
+- their MM-GBSA improvement appears to be in part a mixed-resolution
+  approach where full pairwise interactions are considered in the binding site
+  but the rest of the receptor is treated with a grid-based approach
+- the other thing they do is reweight the energy terms; not sure how this is
+  theoretically justified
+- they used the standard GBSA equation for the binding free energy as their
+  scoring function and objective function for docking
+- nonsorting genetic algorithm II (NSGAII) was used to optimize poses for
+  docking
+- in the BFEL: x axis is minimized RMSD between instantaneous conformation of
+  HupA and that at the active site of TcAChE; y axis is the distance between
+  mass centers of HupA at an instantaneous configuration and that of HupA at the
+  active site; z axis is calculated binding free energy
+- xy plane divided into 500x500 mesh grids, scatter data of binding free
+  energies were fitted to the grids using Gridfit, and nearest neighbor algo
+  was used to interpolate data points, and the result was smoothed
+- generate binding pathway using coarse grained grid, with movement along grid
+  points determined by energy at those points and no back moves permitted
+- goal is to identify lowest-energy pathway from gobal minimum (active site) to
+  bulk solvent
+- IDEAS: fit a force field to reproduce the energy landscapes for a variety of
+  complexes in a database 
+
+-----MMGBSA/MMPBSA Methods-----
+[not strictly relevant but this paper looked interesting]
+- docking and scoring methods generally cannot differentiate between compounds
+  that differ by less than an order of magnitude in affinity/ < 6 kJ/mol in
+  \deltaG_bind 
+- they touch on the sampling issues with alchemical methods, noting that in
+  theory they are very accurate - but how accurate have they been _in
+  practice_? best case? look into this...
+- they note the large standard error in the 3A approach; possibility of 2A
+  approach simulating ligand and complex
+- GBSA is more reproducible than PBSA
+- MM/PBSA calculation on single minimized structures rather than ensemble from
+  simulation (this is what they do in Jiang et al. above)
+- one long simulation tends to underestimate uncertainty
+- however SEM is often large enough for 3A-MM/PBSA calculations that results
+  are rendered useless
+- "snapshots taken after 1 -- 10 ps are statistically independent
+  and an equilibration of 100 ps and a production simulation
+  of 100 -- 200 ps are appropriate, although later studies
+  have indicated that occasionally longer equilibrations are
+  needed"
+- "For avidin, 20 -- 50 simulations were needed to give a
+  standard error of 1 kJ/mol for the seven biotin analogues
+  (6 -- 15 ns simulations for each ligand in total)"
+- they describe additional ways of creating independent simulations: solvation
+  of receptor, selection of alternative conformations from crystal structure,
+  (with care) uncertainty of protonation and conformation of certain groups
+- they note that studies have found MM/PBSA to be better than, worse than, or
+  similar to mm/GBSA result, depending on the system, although theoretically it
+  was assumed that PBSA would be better and so it was favored for a while
+- their study indicates there isn't much to gain by using more accurate
+  solvation terms for the ligand
+- often the non-polar solvation term is small and differs only slightly for
+  similar ligands, which seems wrong because it should model the hydrophobic
+  effect, considered one of the most important effects in binding
+- "the non-polar solvation energy calculated by
+  SASA is three to eight times smaller and of the opposite sign
+  to the same energy calculated by the more accurate PCM
+  (which includes separate terms for cavitation, dispersion and
+  repulsion energies) or 3D-RISM methods"
+- "for more water-exposed
+  binding sites, both SASA and PCM fail strongly (by up to
+  32 and 78 kJ/mol, respectively) to reproduce the AP results
+  and it seems to be hard to find any correction that works
+  for binding sites of different solvent accessibility"
+- "We have tried to estimate both these effects in a consistent
+  way within the MM/GBSA approach (by estimating the binding energy also of 
+  water molecules with MM/GBSA) with reasonable results"
+- they found that using different force fields, as well as sophisticated charge
+  models (including HF/6-31G* charges) made little differences for the E_el term
+- they didn't see any improvement associated with polarizable force fields, but
+  other people reported reasonable results with Amoeba
+- varying the dielectric constant may matter, perhaps depending on protein
+  residues
+- NMA misses many aspects of the entropy, but it's really hard to get a
+  converged entropy estimate from MD e.g. if you tried to use NMA with
+  different conformations derived therefrom
+- their QM approach to estimating E_vdw showed "that three-body
+  effects (mainly the coupling between polarization and repulsion)
+  absent in any standard MM representation (also polarizable)
+  affect receptor--ligand interactions by 2 -- 10 kJ/mol"
+- the use of QM exaggerates the differences in energy functions used for
+  sampling and post-processing
+- they found that an optimized alchemical perturbation approach was more
+  efficient than MM/PBSA, contrary to common belief, because MMPBSA is
+  inherently very imprecise so that many independent simulations are required to
+  get AP-level precision
+- using MM/PBSA, r^2=0.3 for the whole PDBbind database, oof
+- it is tractable for larger variations in the ligand scaffold than AP
+  approaches, and is less sensitive to net charge changes
+- absolute affinity estimates depend strongly on the continuum solvation method
+  chosen
+- mean absolute deviation is often poor, i.e. worse than the null hypothesis of
+  equal affinity for all ligands
+- useful partial annotations in bibliography, worth checking out for more
+  information on this subject
+
+TODO:
+
+Moritsugu, K.; Terada, T.; Kidera, A. Scalable Free Energy
+Calculation of Proteins via Multiscale Essential Sampling. J. Chem.
+Phys. 2010, 133, No. 224105.
+
+Moritsugu, K.; Terada, T.; Kidera, A. Multiscale Enhanced
+Sampling Driven by Multiple Coarse-grained Models. Chem. Phys. Lett.
+2014, 616−617, 20−24.
+
+Moritsugu, K.; Terada, T.; Kidera, A. Multiscale Enhanced
+Sampling for Protein Systems: An Extension via Adiabatic Separation.
+Chem. Phys. Lett. 2016, 661, 279−283.
+
+Fukunishi, H.; Watanabe, O.; Takada, S. On the Hamiltonian
+Replica Exchange Method for Efficient Sampling of Biomolecular Systems:
+Application to Protein Structure Prediction. J. Chem. Phys.
+2002, 116, 9058−9067
+
+Complete reconstruction of an enzyme-inhibitor binding process by molecular
+dynamics simulations
+Ignasi Buch, Toni Giorgino, and Gianni De Fabritiis
+
+Kinetic Characterization of Fragment Binding in AmpC β-Lactamase by
+High-Throughput Molecular Simulations
+
+P. Bisignano†, S. Doerr, M. J. Harvey, A. D. Favia, A. Cavalli, and G. De
+Fabritiis
+
+Insights from Fragment Hit Binding Assays by Molecular Simulations
+Noelia Ferruz, Matthew J. Harvey, Jordi Mestres, and Gianni De Fabritiis
+
+D. Devaurs, L. Bouard, M. Vaisset, C. Zanon, I. Al-Bluwi, R. Iehl, T. Siméon,
+J. Cortés, Nucleic Acids Res. 2013, 41 (Web Server issue), W297–302
+
+Monte Carlo Free Ligand Diffusion with Markov State Model Analysis and Absolute
+Binding Free Energy Calculations
+Ryoji Takahashi, Víctor A. Gil, and Victor Guallar
+
+Shielded Hydrogen Bonds as Structural Determinants of Binding Kinetics:
+Application in Drug Design
+Peter Schmidtke, F. Javier Luque, James B. Murray, and Xavier Barril
+
+V. S. Pande, K. Beauchamp, G. R. Bowman, Methods San Diego Calif. 2010
+
+An Introduction to Markov State Models Their Application to Long Timescale
+Molecular Simulation, Vol. 797. (Eds.: G. R. Bowman, V. S. Pande, F. Noé,).
+Dordrecht: Springer Netherlands, 2014
+
+Pathway and mechanism of drug binding to G-protein-coupled receptors
+Ron O. Drora, Albert C. Pana, Daniel H. Arlowa, David W. Borhania, Paul
+Maragakisa, Yibing Shana, Huafeng Xua, and David E. Shaw
+
+How Does a Drug Molecule Find Its Target Binding Site?
+Yibing Shan, Eric T. Kim, Michael P. Eastwood, Ron O. Dror, Markus A.
+Seeliger, and David E. Shaw
+
+Understanding ligand-receptor recognition by means of high-throughput
+molecular dynamics
+Noelia Ferruz Capapey 
+
+Binding Kinetics versus Affinities in BRD4 Inhibition
+Ming Kuang, Jingwei Zhou, Laiyou Wang, Zhihong Liu, Jiao Guo, and
+Ruibo Wu
+
+Computational study on the unbinding pathways
+of B-RAF inhibitors and its implication for the
+difference of residence time: insight from random
+acceleration and steered molecular dynamics
+simulations
+Yuzhen Niu, Shuyan Li, Dabo Pan, Huanxiang Liu and Xiaojun Yao
+
+Free-energy calculations for semi-flexible macromolecules: Applications to DNA
+knotting and looping
+Stefan M. Giovan, Robert G. Scharein, Andreas Hanke, and Stephen D. Levene
+
+MEPSA: minimum energy pathway analysis for energy landscapes
+Inigo Marcos-Alcalde, Javier Setoain, Jesus I. Mendieta-Moreno,
+Jesus Mendieta, and Paulino Gomez-Puertas
+
+Energy landscape theory, funnels, specificity, and optimal criterion of
+biomolecular binding
+
+Quantifying intrinsic specificity: A potential complement to affinity in drug
+screening
+
+Specificity quantification of biomolecular recognition and its implication for
+drug discovery
+
+Thermodynamic and kinetic specificities of ligand binding
+
+Diffusion and single molecule dynamics on biomolecular interface binding energy
+landscape.
+
+Funnels, pathways, and the energy landscape of protein folding: a synthesis
+
+The Universal Statistical Distributions of the Affinity, Equilibrium Constants, 
+Kinetics and Specificity in Biomolecular Recognition
+Xiliang Zheng, Jin Wang
+
+Measurement of energy landscape roughness of folded and unfolded proteins
+Lilia Milanesia, Jonathan P. Walthoa, Christopher A. Hunter, Daniel J. Shawd,
+Godfrey S. Beddardd, Gavin D. Reidd, Sagarika Deve, and Martin Volk
+
+Universal statistical fluctuations in thermodynamics
+and kinetics of single molecular recognition
+Xiliang Zheng and Jin Wang
