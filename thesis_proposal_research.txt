@@ -1,5 +1,109 @@
 -----Binding Kinetics-----
 
+Ligand Release Pathways Obtained with WExplore: Residence Times
+and Mechanisms
+The Journal of Physical Chemistry B Lotz et al. 2016 doi:10.1021/acs.jpcb.6b04012
+NOTE: a _lot_ of the refs for this paper look good. I'm not adding them all
+under TODO below, but it's worth following up on most of them if possible...
+- exploring unbinding via a weighted ensemble (WE) of trajectories: they obtain
+  ligand residence times and unbinding transition pathways from a
+  nonequilibrium ensemble of unbinding trajectories without biasing forces and
+  without a Markovian assumption about transitions
+- also develop analysis tools including von Mises-Fisher distributions to model
+  clouds of ligand exit points as a quantitative proxy for ligand surface
+  diffusion
+- steered simulations manifest perturbed mechanisms; metadynamics and umbrella
+  sampling require good choices of collective variables
+- Markov state models (MSMs) enable smarter sampling
+- their method actively manages sampling on a shorter timescale than MSM-based
+  techniques and doesn't rely on a Markovian assumption
+- some enhanced sampling restraint potentials don't adequately sample aspects
+  of general ligand binding mechanisms, such as surface diffusion along the
+  protein prior to binding; instead establish first contact with the protein
+  directly at the binding site ("dartboard models")
+- they want to develop general quantitative metrics of surface diffusion on
+  ligand binding transition pathways
+    - they collect positions of the ligand as it exits the "environment" of the
+      protein; these exit point clouds are analyzed using probability maps
+      projected onto a unit sphere whose center is at the center of mass of the
+      protein
+    - the concentration of points on this sphere can be modeled with Von
+      Mises-Fisher probability distributions to get a proxy for surface
+      diffusion
+- like many other papers, they study their system with low affinity ligands so
+  that unbinding is fast (are there fundamental differences in the free energy
+  characteristics of binding for low vs high affinity ligands?)
+- in vanilla WE, you define a set of regions that span the space and enforce
+  equal sampling of all regions
+    - multiple replicates ("walkers") are run in parallel, and each has a
+      weight that determines how much it contributes to system averages
+    - periodically, walkers in over-represented regions are merged and in
+      under-represented regions are cloned
+    - at a clone event, weight is distributed evenly among all clones
+    - at a merge event, the new walker has the sum of the parent weights and
+      the configuration is chosen probabilistically based on the original
+      weights
+    - for full WExplore extension see earlier work; main purpose is to be a
+      more efficient way of sampling high-dimensional spaces
+    - sampling regions are defined by Voronoi polyhedra based on conformations
+      of the system that are a critical distance apart using an RMSD-based
+      distance metric
+    - these regions are hierarchically defined, with top-level regions tiling
+      the entire space, which are then tiled by smaller regions and so on
+    - each level has its own critical distance d_c, with the top level regions
+      having the largest value
+    - the hierarchical structure allows for replica balancing across multiple
+      length scales since balancing is performed top-down
+        - computational effort is prioritized to balance regions that are
+          farthest apart
+        - the structure helps with region assignment; at each level, the
+          distance to each image is only calculated for a small number of
+          branches
+- WExplore regions are defined dynamically over the course of the simulation
+    - they use a 4-level sampling hierarchy
+    - in a sampling cycle, all walkers are run forward for 20 ps, each is
+      assigned to a region, and trajectories are merged/cloned
+- in this work they introduced two novel aspects
+    - minimize sampling expenditure on conformations where the ligand is far
+      from the protein by enforcing a rule that walkers with a minimum
+      interatomic distance to the protein between 5 and 10 A are not allowed to
+      define new regions or be merged/cloned
+    - walkers have a minimum and maximum weight that are associated with no
+      cloning and no merging, respectively
+    - p_max is set to ensure that there are always some walkers in the original
+      binding site
+    - p_min would ideally be set to the probability of conformations in the
+      transition state (in order to efficiently determine unbinding rates)
+    - since this probability isn't known a priori, it is initialized to a small
+      value and grown according to the number of exited trajectories, capped at
+      1/2N (where N is the number of walkers in the simulation)
+- compute exit rate at any time as total exited walkers by total elapsed simulation time
+- the WExplore results compare favorably with their results using conventional
+  simulations, but do not correlate well with experimental binding affinity (or
+  the Huang 2011 paper which does correlate well with experiment) (do we expect 
+  binding affinity and residence time to correlate well? I thought the de
+  Fabritiis paper suggested they don't always.)
+- an exit path for the slowest dissociating ligand is observed in the
+  conventional simulation after 104 ns of total simulation, but after 13.4 ns
+  and 17.3 ns in the WExplore simulations
+- WE shows efficiency gains that scale with the height of the free-energy
+  barrier, so this result for a fast-dissociating ligand is promising
+- also distributions of exit points are generated much more efficiently with
+  WExplore than with conventional MD
+- they compute various quantities from the simulation data, including ligand
+  association probabilities, pseudo-Shannon entropy of the bound ensemble, and
+  the most probable bound structures
+- one effect they observed (due to the fact that DMSO is a structural subset of
+  DSS) is cation-pi interactions associated with DSS were not observed with
+  DMSO
+- they conclude that there is a risk that fragment-based screening approaches
+  using small ligands may miss electrostatic interactions that promote receptor
+  specificity (e.g. cation-pi, salt bridge, halogen bonds)
+- the distance metric used in this paper does not enhance sampling of protein
+  motions distant from the binding site (e.g. allostery)
+- a major feature of WExplore is that it doesn't require selection of a
+  specific order parameter
+
 Free-Energy Landscape of Protein−Ligand Interactions Coupled with
 Protein Structural Changes
 The Journal of Physical Chemistry B Kidera et al. 2017 doi:10.1021/acs.jpcb.6b11696
@@ -7,8 +111,8 @@ The Journal of Physical Chemistry B Kidera et al. 2017 doi:10.1021/acs.jpcb.6b11
   sampling (MSES)
 - they were able to create a free energy surface of the _coupling_ using the
   structural ensemble from the MSES, though they say the surface is in terms of
-  both the protein and ligand degrees of freedom
-- they state that they are interesting in exploring how coupling between the
+  both the protein and ligand degrees of freedom (presumably averaged?)
+- they state that they are interested in exploring how coupling between the
   degrees of freedom of the protein and ligand affects the distribution of
   conformers each explores
 - a challenge in determining this is the separation of timescales for ligand
@@ -38,7 +142,12 @@ The Journal of Physical Chemistry B Kidera et al. 2017 doi:10.1021/acs.jpcb.6b11
 - overall, they iteratively run MD simulations for r_MM and r_CG, followed by
   MCMC sampling of k_MMCG
 - \mu^2 lib was used for multicopy and multiscale MD
-- 
+- used RMSD_prot and ligand distance from binding site as two reaction
+  coordinates in one analysis, and RMSD_prot with fraction of native contacts 
+  formed as coordinates in another
+- see paper for details of analysis of this system
+- they definitely infer a pathway, rate-limiting step, and other details from
+  the PMF
 
 Binding Kinetics in Drug Discovery
 Molecular Informatics de Fabritiis et al. 2016 doi:10.1002/m inf.201501018
