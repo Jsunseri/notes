@@ -1,0 +1,45 @@
+Chapter 6
+From Complexity to Simplicity: The Potential of Mean Force
+- project distributions onto a subset of the coordinates to improve
+  visualization/interpretability
+- this projection is performed by doing a weighted average (integration) over
+  the other coordinates
+- the PMF is the energy whose Boltzmann factor yields the probability
+  density over the chosen coordinate
+- coordinates of interacting atoms are generally not statistically independent,
+  and if they aren't independent, the PMF is the only energy you can get
+- you can obtain a PMF for a general coordinate R = \hat{R}(r^N) by summing up
+  Boltzmann factors for all configurations such that \hat{R}(r^N) = R \forall R
+  to get the full distribution (compute integral using a delta function)
+- if you want to get proportionality constants for PMFs, you need both the
+  inverse configuration integral and the correct representation of a uniform 
+  density in configuration space for the coordinates of interest (1/L for a 
+  single Cartesian coordinate, 1/2pi for a dihedral angle, etc.); this makes
+  sense in terms of producing a dimensionless quantity
+- with a good simulation, you can just compute the quantity of interest from
+  your ensemble of configurations and make a histogram; the PMF is proportional
+  to the negative log of the histogram
+- now the warnings about PMF limitations...
+- in a one-dimensional system, the transition state is the configuration of
+  highest energy between two states of interest, and the barrier height
+  relevant to kinetics is the energy difference between the initial and
+  transition states
+- just because a PMF projects a high-dimensional landscape onto a single
+  coordinate, doesn't mean the resulting landscape tells you anything about the
+  transition state or barrier height/kinetics in the original space
+- since there could in principle be more than one path connecting two states of
+  interest, it may not even be possible in theory to define a reaction
+  coordinate that describes all the aspects you need for kinetics
+- when studying correlations between atom types you should use the radial
+  distribution function (which is basically a pair correlation function)
+- PMFs were developed in the context of distribution functions
+- the radial distribution function g_ab(r) gives the probability of finding an
+  atom of type "b" at a distance r from an atom of type "a", more precisely the
+  relative probability compared to a uniform distribution of "b" particles
+- g(r) is also easy to get from a simulation, you just need to bin because the
+  simulation is finite
+- the PMF and the true pairwise potential are not the same
+- g(r) can be used to compute thermodynamic quantities like the average
+  potential energy, and g(r) itself is experimentally measurable
+- "knowledge-based" or "statistical" potentials are based on PMFs
+
