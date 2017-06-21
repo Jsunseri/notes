@@ -1,3 +1,83 @@
+-----Neural Networks-----
+
+One weird trick for parallelizing convolutional neural networks
+arXiv Krizhevsky 2014 
+- approach to parallelizing CNN training via SGD across multiple GPUs 
+- data parallelism: weights are communicated; model parallelism: neuron
+  activity is communicated
+- data parallelism can be made arbitrarily efficient by increasing batch sizes
+  (well ok, but what if the batch is so big it doesn't fit in memory?), but
+  larger batch sizes have worse convergence in SGD so we want an intermediate
+  batch size in practice
+- data parallelism for convolutional layers (weight sharing reduces number of
+  weights we have to communicate) and model parallelism for fully connected 
+  layers (many weights make data parallelism a bad fit, and generally many
+  activities to communicate)
+- imagine training a neural network with three convolutional layers followed by
+  two fully-connected layers
+    - start with data parallelism: each worker computes the convolutional layer
+      activities for the examples in its batch 
+    - switch to model parallelism for fully-connected layers, which requires
+      communicating activities across workers
+    - three ways to accomplish this
+        - each worker sends its last set of convolutional layer activities to
+          all the other workers, and the workers all compute output for a
+          subset of the neurons using the full batch
+        - one worker sends last-stage activities to the others, everyone
+          computes final activities for this batch, and then concurrently
+          begins backpropagating gradients for this batch while the next worker sends out
+          its last-stage convolutional layer activities, and this continues until all
+          workers have communicated their last-stage activities
+        - all workers send (normal batch size) / (number of workers) of their 
+          last-stage activities to the other workers, otherwise proceed as in option
+          (2)
+- considerations associated with the forward pass:
+    - large memory overhead of full batch, as well as communication time to
+      assemble it all at once
+    - if K is the number of workers, than K-1/K of the communication overhead
+      is hidden in options 2 and 3
+    - communication-to-computation ratio is proportional to K in options 1 and
+      2, but it is constant in K for option 3; this makes option 3 better if
+      the data to be communicated is bottlenecked by bandwidth
+- considerations associated with the backward pass:
+    - in option 1, all workers have computed gradients for all examples, so
+      gradients need to be communicated to the worker that owns a given
+      example, then backpropagating through the convolutional layers can proceed
+    - for options 2 and 3, communication of gradients to the worker that owns
+      their examples can be performed in parallel with the forward pass on the
+      next batch; after K iterations, gradients are propagated all the way through
+      the convolutional layers
+- there aren't very many convolutional weights, so synchronizing that step
+  doesn't require anything fancy: each worker synchronizes and communicates 1/K
+  of the weights
+- we can update the fully connected weights after each partial backward pass,
+  and effectively have two different batch sizes for the fully connected and
+  convolutional layers (the convolutional layers are updated with the full batch)
+- this isn't a strict parallelization of SGD anymore but his experiments
+  suggest this doesn't matter in practice
+- when adjusting the batch size, you probably need to adjust hyperparameters
+  too; he provides a theoretical justification for update rules based on
+  changed batch size, but then says that in practice he found:
+    - multiply the learning rate by k when you multiply the batch size by k
+    - \omega^' = \omega = 0.0005 for all experiments
+- as in previous work, he trained on random 224x224 patches extracted from
+  256x256 images and their horizontal reflections and computed the validation
+  error on the center 224x224 patch
+- he found an accuracy cost associated with larger batch sizes, which is
+  reduced by using the variable batch size technique described above
+- in his machine, simultaneous full-speed communication is permitted between
+  certain subsets of 4 GPUs but not between all 8 (because there are two CPUs
+  with 4 GPUs connected to each, and if a GPU communicates with another that
+  isn't attached to its parent, the communication takes place via host memory)
+- in a multi-GPU setting, it's worth considering model architectures that have
+  restricted connectivity in the upper layers or even have a GPU communicate a
+  small linear projection of its fully connected activations to the others
+- also a multi-GPU setting further favors parallelization scheme 3 over scheme 2
+- reduce effective batch size via restricted model parallelism in the
+  convolutional layers a la two column network in Krizhevsky 2012
+- loss of accuracy when training with larger batch sizes is less significant
+  with larger, more heterogeneous datasets
+
 -----Binding Kinetics-----
 
 Ligand Release Pathways Obtained with WExplore: Residence Times
