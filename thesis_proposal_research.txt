@@ -80,6 +80,200 @@ arXiv Krizhevsky 2014
 
 -----Binding Kinetics-----
 
+Symmetry of forward and reverse path populations
+Bhatt and Zuckerman 2010 arXiv:1002.2402
+- goal is to demonstrate which conditions are necessary for strict symmetry of
+  relative pathway populations at steady state
+- the approximate statement is that when user-defined states correspond to
+  physical basins of reasonable depth (i.e. they are stable), you can expect 
+  symmetry in the forward and backward paths
+- in an equilibrium system, both probability density and probability flows are
+  unchanging in time
+- a system can be fully decomposed in terms of state definitions, even if those
+  state definitions do not encompass all states in the system, if history
+  information is included in the state definition
+- for arbitrary states A and B in equilibrium, there must be an equal number of
+  forward and reverse-moving trajectories in the ensemble; further, the
+  relative probability of the transition pathways in the A-to-B direction must be
+  matched exactly by that in the reverse B-to-A direction
+- at equilibrium, there is no net flow \emph{anywhere} in configuration space;
+  this "fine" balance implies "coarse" balance
+- symmetry of the ratio of path probabilities in nonequilibrium simulations
+  depends on the conditions of the simulation and the state definitions
+- however, there are steady states that form an exact decomposition of
+  equilibrium: if trajectories arriving to B are fed back into A exactly as
+  they would arrive there in equilibrium, the relative probability of the 
+  i to j channels will be unchanged from equilibrium
+- vice versa for the B-to-A direction
+- symmetry of the i to j population ratio is thus not dependent on state
+  definitions in these steady state simulations
+- approximate symmetry is expected when intra-state timescales are much
+  less than transition times (because states emerge from the basin in a
+  quasi-Markovian way)
+- however, it may be difficult to identify true physical basins in a high
+  dimensional system, so that problem may limit the utility of this conclusion
+  in practice
+
+From Dan's blog:
+FAQ on Trajectory Ensembles
+"Methods for finding optimal paths and statistical average “strings” have become
+increasingly popular, and they can be very valuable in principle for describing
+a dominant mechanism.  It is useful to be aware of the pros and cons of such
+approaches as compared to the trajectory ensemble picture.  At least in
+principle, the trajectory ensemble has several advantages: (i) Steady-state
+trajectory ensembles directly provide unbiased estimation of the rate via the
+Hill relation , whereas optimal-path approaches have to make inferences based
+on possibly strong assumptions regarding the connection between
+high-dimensional landscape and kinetics.  I hope to comment on those
+assumptions in a future post.  (ii) Although a single path or string provides a
+reassuringly concrete picture, a true description of mechanism must account for
+all the heterogeneity that may be present, such as alternative pathways and/or
+path fluctuations.  The path ensemble automatically includes all the latter.
+(iii) Most single-path methods are subject to the well-known “trapping”
+phenomenon in which the calculation fails to visit a channel which is most
+important to the process at hand.  Ensemble methods may also suffer from
+trapping, but some variants may be more robust.  I hope to expand on this point
+in a future post."
+
+More is Better: The Trajectory Ensemble Picture
+"From a trajectory ensemble, we can infer a “mechanism” for a process … but we
+cannot from a configurational ensemble.  Assume we’re interested in transitions
+from state A to B in the figure.  Perhaps A is the closed state of an enzyme
+and B is the open state.  The mechanism may then be defined as the weighted set
+of pathways taken from A to B – e.g., the fraction of trajectories taking the
+lower vs the upper pathway in the figure.  Physically these might correspond to
+different orderings of events, such as which sub-domain of the enzyme opens
+first.  (The enzyme adenylate kinase provides a good illustration of the
+potential for path heterogeneity.)
+
+When we think about mechanism in the trajectory-ensemble picture, we see that
+some conventional conceptions of mechanism are inadequate for complex systems.
+For example, the notion of a single transition state or even a ‘transition
+state ensemble’ (e.g., of configurations as likely to reach A before B as the
+reverse) do not describe the sequence possible intermediates through which a
+complex system may pass, let alone the possible multiplicity of pathways.  Our
+picture, in the literal sense, makes all this clear.
+
+Can kinetic information – rate constants – be obtained from an equilibrium
+ensemble of trajectories?  Yes, because trajectories are intrinsically
+dynamical.  The trick is to examine a suitable subset of trajectories."
+
+So You Want To Do Some Path Sampling
+"Generally speaking, there are two kinds of transition events.  As shown in our
+original long one-dimensional trajectory and immediately above in magnified
+view, in a simple “activated process” characterized by a dominant energy
+barrier, the duration of a transition tb will be much shorter than the waiting
+time (a.k.a. dwell time) in the initial state.  The sum of the average dwell
+and event times is called the mean first-passage time (MFPT).  Although tb may
+be short and much less than the MFPT, it is still finite.  A more challenging
+scenario is depicted below in the figure with many intermediate states: each
+intermediate can lead to a separate, possibly lengthy dwell – and don’t forget
+that trajectories can reverse many times leading to more dwells than there are
+intermediates.  In such a case, the transition-event duration tb may be similar
+to the overall MFPT... Qualitatively, it turns out that the limiting timescale
+for path sampling is not tb but a quantity which represents the
+sum of all the event durations for transitions among the intermediates –
+excluding the intermediate dwell times.  This doesn’t solve the problem of
+trajectory correlations or weights, but at least offers some hope for obtaining
+useful results."
+
+Simultaneous Computation of Dynamical and Equilibrium
+Information Using a Weighted Ensemble of Trajectories
+Journal of Chemical Theory and Computation Suarez et al. 2014 doi:10.1021/ct401065r
+this article is part of a JCTC special issue entitled "Free Energy
+Calculations: Three Decades of Adventure in Chemistry and Biophysics"
+and the refs seem to provide a pretty comprehensive WESTPA bib
+- a subset of the equilibrium trajectory ensemble can be used to describe many 
+  nonequilibrium processes; in particular, you can extract nonequilibrium 
+  subsets of an equilibrium trajectory for computing kinetic quantities
+- straightforward methods of estimating equilibrium and dynamical properties
+  require different algorithms for the two types of quantities
+- alternatively, you can do something more sophisticated to get both in one go
+    - use a Markov state model (MSM), built from replica exchange molecular
+      dynamics, the adaptive seeding method, or another generalized ensemble algo
+    - choose states of interest in advance and interpolate between them via a
+      series of nonintersecting interfaces (milestoning, transition interface
+      sampling, forward flux sampling)
+- weighted ensemble (WE) is a path sampling method that can probe both
+  equilibrium and nonequilibrium properties
+- they mention that WE generates an ensemble of continuous trajectories, which
+  is in contrast to many other advanced sampling strategies - worth seeing what
+  the alternatives are, since they may be more similar to what want to try
+- their approach lets you calculate rates between arbitrary states defined
+  after you've finished simulating the system; this differs from many other
+  approaches that use that information to guide the simulation, and is useful
+  because in general you don't know what is important until after you've
+  simulated, and you can actually use rates to define states
+- typically the bins defined in WE are non-Markovian
+- non-Markovian analysis based on decomposing equilibrium ensemble into two
+  nonequilibrium steady states
+- the weighted ensemble approach is described in doi:10.1021/acs.jpcb.6b04012
+  (also found in this repo); briefly:
+    - multiple simultaneous trajectories with weights that sum to one,
+      occasionally coupled by replication or combination events every \tau time
+      units
+    - configuration space is partitioned into bins, which may be statically or
+      dynamically determined, and these bins govern the coupling
+    - when a trajectory enters an unoccupied bin, it is replicated (usually
+      according to a preset value), and its weight is divided evenly among the
+      replicates
+    - if the number of trajectories in a bin exceeds that value, they are
+      combined, with weights summed
+- this is done in a way that guarantees that dynamics are still statistically
+  unbiased
+- a WE simulation is at equilibrium when all states are in detailed balance
+  i.e. probability flow in both directions between arbitrary states are equal
+- at equilibrium, you can compute equilibrium properties (state populations,
+  PMFs) by summing trajectory weights in the relevant regions of phase space
+- if you want to obtain rates, decompose the trajectory ensemble into two
+  steady states; then e.g. k_AB = 1/MFPT(A->B) = Flux(A->B|\alpha)/p(\alpha)
+- you could in principle do the same direct calculation with an equilibrium
+  ensemble of unweighted trajectories by assigning equal weights to each
+- they also describe an alternative method of estimating observables via a
+  rate matrix that is non-Markovian because it includes history information
+  (which state a trajectory was most recently associated with)
+- this rate matrix depends on decomposing the equilibrium population based on
+  history information, i.e. for each bin i: p_i^eq = p_i^\alpha + p_i^\Beta (a
+  "labeled" analysis)
+- with N bins, a set of 2N probabilities is required for analysis so we account
+  for a state with a given history transitioning to the other label in every
+  bin
+- they point out that the states are strictly constituted by the bins, but this
+  binning can be done in post-analysis; this is distinct from the configuration
+  space bins using during sampling but I _don't_ think the latter introduces any
+  bias as long as the system has actually reached equilibrium. I would think you
+  may be at risk of not sampling efficiently if you have a poor choice of initial
+  binning, but it shouldn't affect the _accuracy_ of your final results as long as
+  you confirm equilibrium by the detailed balance condition. Probably have to
+  check the earlier papers with more theoretical motivation to be sure, but I
+  think this just follows from the definition of equilibrium implying that
+  detailed balance holds for any arbitrary definition of states
+- sparsity of the rate matrix is guaranteed since more than half of its
+  elements must be zero
+- there are some subtleties in computing rates between bins, see the paper for
+  details (e.g. rates are given by a ratio of averages as opposed to an average 
+  ratio of probability flux to population)
+- K^T p_SS = p_SS where p_SS is the steady-state population (by the definition 
+  of steady state), which is solved separately for the A and B steady states
+- then if you want the _equilibrium_ bin populations, sum the steady state
+  solutions for each state, for each bin
+- they show that a traditional Markov analysis of the trajectories yields
+  biased rate estimates because most divisions of configuration space are not
+  true Markovian states
+- their non-Markovian matrix estimates converge more quickly than their direct
+  estimates, presumably because the direct approach requires relaxation of the
+  full probability distribution to equilibrium, while the matrix approach
+  requires only relaxation of the distribution within each bin to obtain
+  accurate interbin rates
+- the Markov analysis leads to MFPT estimates outside the confidence interval
+  for the brute force calculation, and more sophisticated Markov models don't
+  correct this bias; equilibrium properties can be estimated without bias using
+  a Markov approach because history dependence is irrelevant there
+- they state that in general discretized systems are non-Markovian, even when
+  the underlying continuous dynamics are Markovian
+- sampling "orthogonal" coordinates continues to be a problem for any method
+  relying on preselected coordinates
+
 Ligand Release Pathways Obtained with WExplore: Residence Times
 and Mechanisms
 The Journal of Physical Chemistry B Lotz et al. 2016 doi:10.1021/acs.jpcb.6b04012
@@ -608,7 +802,7 @@ Ignasi Buch, Toni Giorgino, and Gianni De Fabritiis
 Kinetic Characterization of Fragment Binding in AmpC β-Lactamase by
 High-Throughput Molecular Simulations
 
-P. Bisignano†, S. Doerr, M. J. Harvey, A. D. Favia, A. Cavalli, and G. De
+P. Bisignano, S. Doerr, M. J. Harvey, A. D. Favia, A. Cavalli, and G. De
 Fabritiis
 
 Insights from Fragment Hit Binding Assays by Molecular Simulations
